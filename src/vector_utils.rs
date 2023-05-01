@@ -27,7 +27,7 @@ fn merge(list: &mut [i32], left_index: usize, mid_index: usize, right_index: usi
     let mut j = 0;
 
     while i < temp_left.len() && j < temp_right.len() {
-        if &temp_left[i] <= &temp_right[j] {
+        if temp_left[i] <= temp_right[j] {
             list[k] = temp_left[i];
             i += 1;
         } else {
@@ -77,8 +77,9 @@ pub fn find_median(list: &[i32]) -> f32 {
         let bmid = (len - 1) / 2;
         let tmid = bmid + 1;
 
-        return (list[bmid] + list[tmid]) as f32 / 2.0;
+        let total = (list[bmid] + list[tmid]) as f32;
+        return total / 2.0;
     }
 
-    return list[(len - 1) / 2] as f32;
+    list[(len - 1) / 2] as f32
 }
